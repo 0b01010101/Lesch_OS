@@ -1,0 +1,42 @@
+
+#ifndef     MAIN_H
+#define     MAIN_H
+
+#include "help_func.h"
+#include "multiboot.h"
+
+#include "isr.c"
+#include "list.c"
+#include "sync.c"
+#include "timer.c"
+#include "memory.c"
+#include "keyboard.c"
+#include "isr_handl.c"
+#include "tables_descript.c"
+#include "help_func.c"
+#include "monitor.c"
+#include "tty16.c"
+#include "schedul.c"
+#include "process.c"
+#include "ipc.c"
+#include "msg.c"
+#include "common.c"
+#include "io_disp.c"
+//#include "rtl8139.c"
+#include "rtl8029.c"
+#include "socket.c"
+#include "ext2.c"
+#include "ata.c"
+#include "pci.c"
+#include "vfs.c"
+#include "net.c"
+#include "elf_loader.c"
+#include "bios.c"
+#include "vesa.c"
+#include "izo.c"
+#include "windows.c"
+#include "bitmap.c"
+#include "shell.c"
+#include "syscall.c"
+
+#endif
