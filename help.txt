@@ -1,0 +1,23 @@
+
+-----------------------------------------------------------------------------
+gcc -m32 -ffreestanding -c src\main.c -o main.o
+nasm -f elf -o kernel.o asm\kernel.asm
+nasm -f elf -o tab_descr_asm.o asm\tab_descr_asm.asm
+nasm -f elf -o isr_asm.o asm\isr_asm.asm
+nasm -f elf -o switch_task.o asm\switch_task.asm
+nasm -f elf -o user.o asm\user.asm
+nasm -f elf -o syscall.o asm\syscall.asm
+nasm -f elf -o bios.o asm\syscall.asm
+													
+ld -m i386pe -T link.ld    
+objcopy -O binary kernel.tmp kernel.bin 
+nasm -f bin -o boot.bin asm\boot.asm  
+
+dd if="/dev/zero" of="_lor.img" bs=1024 count=1440
+dd if="boot.bin" of="_lor.img" conv=notrunc 
+---------------------------------------------------------------------------------
+"in one line" in cmd
+
+gcc -m32 -mno-sse -g -ffreestanding -c src\main.c -o main.o && nasm -f elf -o kernel.o asm\kernel.asm && nasm -f elf -g -o tab_descr_asm.o asm\tab_descr_asm.asm && nasm -f elf -g -o isr_asm.o asm\isr_asm.asm && nasm -f elf -g -o switch_task.o asm\switch_task.asm && nasm -f elf -g -o user.o asm\user.asm && nasm -f elf -g -o syscall.o asm\syscall.asm && nasm -f elf -o bios_asm.o asm\bios_asm.asm && ld -m i386pe -T link.ld && objcopy -O binary kernel.tmp kernel.bin && nasm -f bin -g -o boot.bin asm\boot.asm && dd if="/dev/zero" of="_lor.img" bs=1024 count=1440 && dd if="boot.bin" of="_lor.img" conv=notrunc
+
+---------------------------------------------------------------------------------
