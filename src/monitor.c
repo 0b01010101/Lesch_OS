@@ -406,47 +406,6 @@ void vprint(u8int *text, ...) {
 }
 
 void *dump(void *addr, u32int count, u8int *type) {
-
-    u8int *dec = "dec";
-    u8int *hex = "hex";
-    u8int *n = addr;
-
-    if(!strcmp(type, hex)) {
-
-        u32int c = 0;
-        u32int i = 0;
-        u32int tmp;
-        char noZeroes = 1;
-        u8int *ret = kmalloc(count + (count / 3) + 2);
-
-        for(int j = 0; j < count; j++) {
-            tmp = n[j] & 0xF;
-
-            if(c == 2) {
-                c = 0;
-                ret[i] = ' ';
-                i++;
-            }
-            c++;
-
-            if(tmp == 0 && noZeroes != 0) {
-                ret[i] = '0';
-                i++;
-                continue;
-            }
-
-            if (tmp >= 0xA) {
-                noZeroes = 0;
-                ret[i] = (tmp - 0xA) + 'A';
-                i++;
-            }
-            else {
-                noZeroes = 0;
-                ret[i] = tmp + '0';
-                i++;
-            }
-        }
-        ret[i] = '\0';
-        return ret;
-    }
+  void *ret;
+ return ret;
 }
